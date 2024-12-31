@@ -7,7 +7,7 @@ const customerSchema = new Schema(
       lowercase: true,
       unique: true,
       required: true,
-      index: true,
+      index: { unique: true, collation: { locale: "en", strength: 2 } },
     },
     phonenumber: {
       type: String,
