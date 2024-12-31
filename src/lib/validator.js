@@ -25,5 +25,11 @@ const adminLoginValidator = () => [
   body("password", "Please Enter Password").notEmpty(),
 ];
 
+const itemRegisterValidator = () => [
+  body("name", "Please Enter name").notEmpty(),
+  // body("image", "Please Upload Image").notEmpty(),
+  body("price", "Please Enter Price").notEmpty()
+]
 
-export { validateHandler, adminRegisterValidator,adminLoginValidator };
+
+export { validateHandler, adminRegisterValidator,adminLoginValidator,itemRegisterValidator  };
