@@ -7,6 +7,7 @@ const categorySchema = new Schema(
       lowercase: true,
       trim: true,
       required: true,
+      index: { unique: true, collation: { locale: "en", strength: 2 } },
     },
   },
   {
