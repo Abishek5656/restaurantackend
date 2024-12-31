@@ -1,23 +1,28 @@
 import mongoose, { Schema } from "mongoose";
 
-const itemSchema = new Schema(
+const menuSchema = new Schema(
   {
-    itemname: {
+    name: {
       type: String,
       require: true,
       lowercase: true,
       unique: true,
     },
-    itemDescription: {
+    description: {
       type: String,
       lowercase: true,
     },
-    itemImage: {
+    image: {
       type: String,
     },
-    itemPrice: {
-      type: Float,
+    price: {
+      type: Number,
       require: true,
+    },
+    categoryName: {
+      type: String,
+      lowercase: true,
+      trim: true,
     },
     categoryId: {
       type: Schema.Types.ObjectId,
@@ -29,4 +34,4 @@ const itemSchema = new Schema(
   }
 );
 
-export const Item = mongoose.model("Item", itemSchema);
+export const Menu = mongoose.model("Menu", menuSchema);
