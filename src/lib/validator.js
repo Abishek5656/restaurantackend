@@ -13,6 +13,17 @@ const validateHandler = (req, res, next) => {
   else next(new ErrorHandler(errorMessages, 400));
 };
 
-const userRegisterValidator = () => [];
+const adminRegisterValidator = () => [
+  body("name", "Please Enter Name").notEmpty(),
+  body("username", "Please Enter Username").notEmpty(),
+  body("phoneNumber", "Please Enter Phone Number").notEmpty(),
+  body("password", "Please Enter Password").notEmpty(),
+];
 
-export { userRegisterValidator };
+const adminLoginValidator = () => [
+  body("username", "Please Enter Username").notEmpty(),
+  body("password", "Please Enter Password").notEmpty(),
+];
+
+
+export { validateHandler, adminRegisterValidator,adminLoginValidator };

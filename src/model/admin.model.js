@@ -1,18 +1,19 @@
 import mongoose, { Schema } from "mongoose";
 
-const userSchema = new Schema(
+const adminSchema = new Schema(
   {
     username: {
       type: String,
       lowercase: true,
       unique: true,
+      trim:true,
       required: true,
     },
     password: {
       type: String,
       required: true,
     },
-    fullName: {
+    name: {
       type: String,
       lowercase: true,
       required: true,
@@ -23,6 +24,7 @@ const userSchema = new Schema(
     },
     address: {
       type: String,
+      default:""
     },
   },
   {
@@ -30,4 +32,4 @@ const userSchema = new Schema(
   }
 );
 
-export const User = mongoose.model("User", userSchema);
+export const Admin = mongoose.model("Admin", adminSchema);
