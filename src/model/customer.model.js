@@ -25,22 +25,6 @@ const customerSchema = new Schema(
       type: Number,
       default: 0,
     },
-    orderDetails: [
-      {
-        orderId: {
-          type: Schema.Types.ObjectId,
-          ref: "Order",
-        },
-        amount: {
-          type: Number,
-          required: true,
-        },
-        date: {
-          type: Date,
-          default: Date.now,
-        },
-      },
-    ],
     createdBy: {
       type: Schema.Types.ObjectId,
       ref: "User",
