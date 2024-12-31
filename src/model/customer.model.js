@@ -14,14 +14,15 @@ const customerSchema = new Schema(
     },
     phonenumber2: {
       type: Number,
-      required: true,
     },
     address: {
       type: String,
       lowercase: true,
+      default: ""
     },
     remainingBalance: {
       type: Number,
+      default:0
     },
     createdBy: {
       type: Schema.Types.ObjectId,
