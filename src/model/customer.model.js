@@ -6,24 +6,41 @@ const customerSchema = new Schema(
       type: String,
       lowercase: true,
       unique: true,
-      required: true, 
+      required: true,
+      index: true,
     },
     phonenumber: {
-      type: Number,
-      required: true, 
+      type: String,
+      required: true,
     },
     phonenumber2: {
-      type: Number,
+      type: String,
     },
     address: {
       type: String,
       lowercase: true,
-      default: ""
+      default: "",
     },
-    remainingBalance: {
+    pendingBalance: {
       type: Number,
-      default:0
+      default: 0,
     },
+    orderDetails: [
+      {
+        orderId: {
+          type: Schema.Types.ObjectId,
+          ref: "Order",
+        },
+        amount: {
+          type: Number,
+          required: true,
+        },
+        date: {
+          type: Date,
+          default: Date.now,
+        },
+      },
+    ],
     createdBy: {
       type: Schema.Types.ObjectId,
       ref: "User",
