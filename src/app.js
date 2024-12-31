@@ -28,7 +28,7 @@ const JWT_KEY  = process.env.JWT_SECREAT_KEY;
 
 //import Routes
 import userRouter from "./routes/admin.routes.js";
-import itemRouter from "./routes/item.routes.js";
+import itemRouter from "./routes/menu.routes.js";
 
 //routes declaration
 app.use("/api/v1/admin", userRouter);
