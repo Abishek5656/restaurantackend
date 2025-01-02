@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import { validateHandler, } from "../lib/validator.js";
 import { verifyJWT } from "../middleware/auth.middleware.js";
 import { customerRegisterValidator,validateHandler } from "../lib/validator.js";
 import { createCustomer, updateCustomerDetails, deleteCustomerDetails } from "../controllers/customer.controller.js"
