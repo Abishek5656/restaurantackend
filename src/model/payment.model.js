@@ -3,11 +3,12 @@ import mongoose, { Schema } from "mongoose";
 const paymentSchema = new Schema(
   {
     paymentType: {
-      type: Number, // 1 - cash, 2 - UPI, 3 - card
-      required: true,
+      type: Number,
+      default: 1 // 1 - cash, 2 - UPI, 3- card
     },
     paymentStatus: {
-      type: Number, // 1- paid, 2 - partical payment , 3 - cancelled, 4.not paid
+      type: Number,
+     default: 1 // 1- paid, 2 - partical payment , 3 - cancelled, 4.not paid
     },
     orderId: {
       type: Schema.Types.ObjectId,

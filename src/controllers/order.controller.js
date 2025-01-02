@@ -3,12 +3,14 @@ import { ErrorHandler } from "../utils/utility.js";
 import { Order } from "../model/order.model.js";
 import { Admin } from "../model/admin.model.js";
 import { Customer } from "../model/customer.model.js";
+import { Payment } from "../model/payment.model.js"
 import { generateOrderSequence } from "../utils/helper.js";
 
 export const createOrder = TryCatch(async (req, res, next) => {
+
   const { _id } = req.admin;
 
-  const { orderDetails, customerId, totalBillAmount } = req.body;
+  const { orderDetails, customerId, amountPaid, paymentType } = req.body;
 
   const admin = await Admin.findById(_id);
 
@@ -24,12 +26,16 @@ export const createOrder = TryCatch(async (req, res, next) => {
     return accumulator + item.itemPrice;
   }, 0);
 
-  console.log(typeof(totalAmount));
-
-  if (totalBillAmount > totalAmount) {
+  if (amountPaid > totalAmount) {
     return next(
       new ErrorHandler("Total Bill Amount cannot exceed the Total Amount.")
     );
+  }
+
+  let paymentStatus = 1;
+
+  if(amountPaid < totalAmount) {
+    paymentStatus = 2
   }
 
   const createOrder = await Order.create({
@@ -40,9 +46,20 @@ export const createOrder = TryCatch(async (req, res, next) => {
     orderBillAmount: Number(totalAmount),
   });
 
+  const createPayment = await Payment.create({
+    paymentType : paymentType,
+    paymentStatus: paymentStatus,
+    orderId: createOrder._id,
+    orderNumber: createOrder.orderNumber,
+    customerId:createOrder.customerId,
+    amountPaid: amountPaid
+  });
+
   return res
     .status(200)
     .json({ sucess: true, message: "Order Created Sucessfully" });
 });
+
+
 
 
