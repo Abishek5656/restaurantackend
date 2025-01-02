@@ -10,7 +10,7 @@ const router = Router();
 router.use(verifyJWT);
 
 // Route to handle item creation
-router.route("/create").post(upload.single("image"),itemRegisterValidator(),validateHandler,createItem);
+router.route("/create").post(itemRegisterValidator(),validateHandler,createItem);
 
 router.route("/update/:id").put(updateMenuItem);
 

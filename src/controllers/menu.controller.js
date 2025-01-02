@@ -53,19 +53,25 @@ export const updateMenuItem = TryCatch(async (req, res, next) => {
 
   if (!existingMenu) return next(new ErrorHandler("Menu Item Not Found"));
 
-  const updateMenu = await Menu.findByIdAndUpdate(id, {
-    $set: {
-      name: name,
-      description: description,
-      price: price,
-      categoryName: newCategory?.categoryName || existingCategory?.categoryName,
-      categoryId: newCategory?._id || existingCategory?._id,
+  const updateMenu = await Menu.findByIdAndUpdate(
+    id, 
+    {
+      $set: {
+        name: name,
+        description: description,
+        price: price,
+        categoryName: newCategory?.categoryName || existingCategory?.categoryName,
+        categoryId: newCategory?._id || existingCategory?._id,
+      }
     },
-  });
+    {
+      new: true 
+    }
+  );;
 
   return res
     .status(200)
-    .json({ sucess: true, message: "Menu item updated Sucessfully" });
+    .json({ sucess: true, message: "Menu item updated Sucessfully", data:updateMenu });
 });
 
 export const deleteMenuItem = TryCatch(async (req, res, next) => {
