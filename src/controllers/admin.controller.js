@@ -90,7 +90,7 @@ export const updateAdminDetails = TryCatch(async (req, res, next) => {
 
   return res
     .status(200)
-    .json({ success: true, message: "Admin details updated successfully" });
+    .json({ success: true, message: "Admin details updated successfully", data:adminDetails  });
 });
 
 export const deleteAdmin = TryCatch(async (req, res, next) => {

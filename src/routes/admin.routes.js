@@ -1,11 +1,9 @@
 import { Router } from 'express';
-
-const router = Router();
-
 import { adminRegisterValidator,validateHandler, adminLoginValidator } from "../lib/validator.js";
 import { adminSignup, adminLogin, deleteAdmin,updateAdminDetails } from "../controllers/admin.controller.js";
 import { verifyJWT } from "../middleware/auth.middleware.js";
 
+const router = Router();
 
 router.route("/register").post(adminRegisterValidator(),validateHandler,adminSignup)
 
