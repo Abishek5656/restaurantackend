@@ -19,6 +19,14 @@ const paymentSchema = new Schema(
       required: true, 
       unique: true,
     },
+    totalBill: {
+      type: Number,
+      default: 0
+    },
+    amountPaid: {
+      type: Number,
+      default: 0
+    },
   },
   {
     timestamps: true,
