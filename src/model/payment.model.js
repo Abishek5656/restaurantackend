@@ -7,8 +7,7 @@ const paymentSchema = new Schema(
       required: true,
     },
     paymentStatus: {
-      type: Number,
-      default: 1, // 1 - paid, 2 - not paid, 3 - cancelled
+      type: Number, // 1- paid, 2 - partical payment , 3 - cancelled, 4.not paid
     },
     orderId: {
       type: Schema.Types.ObjectId,
@@ -19,9 +18,9 @@ const paymentSchema = new Schema(
       required: true, 
       unique: true,
     },
-    totalBill: {
-      type: Number,
-      default: 0
+    customerId: {
+      type: Schema.Types.ObjectId,
+      ref: "Customer",
     },
     amountPaid: {
       type: Number,

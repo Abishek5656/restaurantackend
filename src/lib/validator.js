@@ -31,5 +31,10 @@ const itemRegisterValidator = () => [
   body("price", "Please Enter Price").notEmpty()
 ]
 
+const customerRegisterValidator = () => [
+  body("name", "Please Enter name").notEmpty(),
+  body("phonenumber", "Please Enter phonenumber").notEmpty(),
+]
 
-export { validateHandler, adminRegisterValidator,adminLoginValidator,itemRegisterValidator  };
+
+export { validateHandler, adminRegisterValidator,adminLoginValidator,itemRegisterValidator,customerRegisterValidator  };

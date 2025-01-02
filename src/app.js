@@ -29,10 +29,14 @@ const JWT_KEY  = process.env.JWT_SECREAT_KEY;
 //import Routes
 import userRouter from "./routes/admin.routes.js";
 import itemRouter from "./routes/menu.routes.js";
+import customerRouter from "./routes/customer.routes.js";
+import oderDetails from "./routes/order.routes.js"
 
 //routes declaration
 app.use("/api/v1/admin", userRouter);
 app.use("/api/v1/item", itemRouter);
+app.use("/api/v1/customer",customerRouter);
+app.use("/api/v1/order",oderDetails)
 
 
 export {envMode,JWT_KEY, app };

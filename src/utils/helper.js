@@ -16,3 +16,16 @@ export const compareHassedPassword = async (password, hassedPassword) => {
 export const uploadImageToCloudinary = () => {
 
 }
+
+export const generateOrderSequence = async(size = 12) => {
+  
+  const customAlphaets = "QWERTYUIOPLKJHGFDSAZXCVBNM1234567890";
+
+  let orderSequnece = "OD";
+  for(let i =0; i < size; i++) {
+    let random = Math.floor(Math.random() *  customAlphaets.length);
+    orderSequnece += random;
+  }
+
+  return orderSequnece;
+}
