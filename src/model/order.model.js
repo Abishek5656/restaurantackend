@@ -19,9 +19,6 @@ const orderSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Customer",
     },
-    amountPaid: {
-      type: Number,
-    },
   },
   {
     timestamps: true,
