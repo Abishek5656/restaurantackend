@@ -12,6 +12,7 @@ const customerSchema = new Schema(
     phonenumber: {
       type: String,
       required: true,
+      unique: true
     },
     phonenumber2: {
       type: String,
@@ -29,6 +30,10 @@ const customerSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
+    updatedBy: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    }
   },
   {
     timestamps: true,
