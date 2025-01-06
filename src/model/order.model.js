@@ -10,7 +10,8 @@ const orderSchema = new Schema(
     orderDetails: [
       {
         itemId: {
-          type: String,
+          type: Schema.Types.ObjectId,
+          ref: "Menu",
         },
         itemPrice: {
           type: Number,
