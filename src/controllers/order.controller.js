@@ -35,6 +35,9 @@ export const createOrder = TryCatch(async (req, res, next) => {
   let paymentStatus = 1;
 
   if(amountPaid < totalAmount) {
+    let previousPendingAmount = findCustomer?.pendingBalance || 0;
+    let remainingAmount = (totalAmount - amountPaid) + previousPendingAmount;
+    await findCustomer.updateOne({ $set: { pendingBalance: remainingAmount } });
     paymentStatus = 2
   }
 
@@ -49,9 +52,9 @@ export const createOrder = TryCatch(async (req, res, next) => {
   const createPayment = await Payment.create({
     paymentType : paymentType,
     paymentStatus: paymentStatus,
-    orderId: createOrder._id,
-    orderNumber: createOrder.orderNumber,
-    customerId:createOrder.customerId,
+    orderId: createOrder?._id,
+    orderNumber: createOrder?.orderNumber,
+    customerId:createOrder?.customerId,
     amountPaid: amountPaid
   });
 
@@ -61,5 +64,6 @@ export const createOrder = TryCatch(async (req, res, next) => {
 });
 
 
+// export 
 
 
